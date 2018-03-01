@@ -32,4 +32,4 @@ test_7.2:
     - ./vendor/bin/phpunit -c phpunit.xml
 
 after_script:
-  - bash <(curl -s https://codecov.io/bash) -t aaa
+  - bash <(curl -s https://codecov.io/bash) -t b62a2ffb-4db3-48c1-84a8-29d699bd4225
