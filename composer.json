@@ -1,0 +1,32 @@
+{
+	"name" : "icircle/line-item-price-rule-engine",
+	"description" : "Rule Engine for calculating the Total Price of a Line Item",
+	"type" : "library",
+	"authors" : [{
+			"name" : "Raghavendra K R",
+			"email" : "krraghavendra@yahoo.co.in",
+			"homepage" : "http://krraghavendra.in",
+			"role" : "Software Developer"
+		}
+	],
+	"require" : {
+		"php" : ">=5.4",
+		"php-platform/errors" : "~0.1",
+		"php-platform/config" : "~0.1"
+	},
+	"require-dev" : {
+		"phpunit/phpunit" : "~4.8",
+		"php-platform/mock-config" : "~0.1"
+	},
+	"autoload" : {
+		"psr-4" : {
+			"ICircle\\" : "src/"
+		}
+	},
+	"autoload-dev" : {
+		"psr-4" : {
+			"ICircle\\Tests\\" : "tests/"
+		}
+	},
+	"minimum-stability" : "stable"
+}
