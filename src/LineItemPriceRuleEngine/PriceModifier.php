@@ -10,11 +10,6 @@ namespace ICircle\LineItemPriceRuleEngine;
 class PriceModifier {
     
     /**
-     * @var int
-     */
-    private $id = null;
-    
-    /**
      * @var string
      */
     private $title = null;
@@ -34,21 +29,6 @@ class PriceModifier {
      */
     private $ruleId = null;
     
-    /**
-     * @return int
-     */
-    public function getId() {
-        return $this->id;
-    }
-    
-    /**
-     * @param int $id
-     * @return PriceModifier
-     */
-    public function setId($id) {
-        $this->id = $id;
-        return $this;
-    }
     
     /**
      * @return string

@@ -156,18 +156,18 @@ abstract class LineItem {
                 throw new ProgrammingError('Unsupported Operator in PriceModifier');
         }
 
-        $this->priceModifiers[$priceModifier->getId()] = $priceModifier;
+        $this->priceModifiers[$priceModifier->getRuleId()] = $priceModifier;
         
         return $this;
     }
     
     /**
-     * @param int $id
+     * @param int $ruleId
      * @return PriceModifier
      */
-    public function getPriceModifier($id){
-        if(array_key_exists($id, $this->priceModifiers)){
-            return $this->priceModifiers[$id];
+    public function getPriceModifier($ruleId){
+        if(array_key_exists($ruleId, $this->priceModifiers)){
+            return $this->priceModifiers[$ruleId];
         }else{
             null;
         }

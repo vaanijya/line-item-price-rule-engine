@@ -14,7 +14,8 @@ class AddRule implements Rule{
     public function exec($lineItem) {
         $priceModifier = new PriceModifier();
         
-        $priceModifier->setId(1);
+        $priceModifier->setRuleId(2);
+        $priceModifier->setTitle('Add Rule');
         $priceModifier->setOperator(LineItem::PRICE_MODIFIER_OPERATOR_ADD);
         $priceModifier->setAmount(20);
         $lineItem->addPriceModifier($priceModifier);

@@ -5,7 +5,7 @@ use ICircle\LineItemPriceRuleEngine\Rule;
 use ICircle\LineItemPriceRuleEngine\LineItem;
 use ICircle\LineItemPriceRuleEngine\PriceModifier;
 
-class ReplaceRule implements Rule{
+class WrongOperatorRule implements Rule{
 
     /**
     * {@inheritDoc}
@@ -14,10 +14,10 @@ class ReplaceRule implements Rule{
     public function exec($lineItem) {
         $priceModifier = new PriceModifier();
         
-        $priceModifier->setRuleId(1);
-        $priceModifier->setTitle('Replace Rule');
-        $priceModifier->setOperator(LineItem::PRICE_MODIFIER_OPERATOR_REPLACE);
-        $priceModifier->setAmount(200);
-        $lineItem->addPriceModifier($priceModifier,'SGD');
+        $priceModifier->setRuleId(5);
+        $priceModifier->setTitle('Wrong Operator Rule');
+        $priceModifier->setOperator('percentage');
+        $priceModifier->setAmount(20);
+        $lineItem->addPriceModifier($priceModifier);
     }
 }

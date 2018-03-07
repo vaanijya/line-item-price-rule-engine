@@ -14,7 +14,8 @@ class SubtractRule implements Rule{
     public function exec($lineItem) {
         $priceModifier = new PriceModifier();
         
-        $priceModifier->setId(1);
+        $priceModifier->setRuleId(3);
+        $priceModifier->setTitle('Subtract Rule');
         $priceModifier->setOperator(LineItem::PRICE_MODIFIER_OPERATOR_SUBTRACT);
         $priceModifier->setAmount(30.3);
         $lineItem->addPriceModifier($priceModifier);
