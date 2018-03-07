@@ -8,6 +8,7 @@ use ICircle\Tests\LineItemPriceRuleEngine\Mocks\LineItem;
 use PhpPlatform\Mock\Config\MockSettings;
 use ICircle\LineItemPriceRuleEngine\Package;
 use ICircle\LineItemPriceRuleEngine\LineItem as ALineItem;
+use ICircle\Tests\LineItemPriceRuleEngine\Mocks\RulesProviderWithoutInterface;
 
 class TestRuleEngine extends TestCase {
     
@@ -74,6 +75,17 @@ class TestRuleEngine extends TestCase {
                     ]
                 ]
             ],
+            'test with repeating rule id' =>[
+                [100,'INR','',2,'INR'],
+                ['ReplaceRule','AddRule','ReplaceRule'],
+                ['unitPrice'=>[100,'INR',''],'quantity'=>[2,'INR'],'total'=>[220,'SGD'],
+                    'priceModifiers' => [
+                        [1,'Replace Rule',200,ALineItem::PRICE_MODIFIER_OPERATOR_REPLACE],
+                        [2,'Add Rule',20,ALineItem::PRICE_MODIFIER_OPERATOR_ADD]
+                    ]
+                ],
+                'Error in running Rule Engine'
+            ],
             'test Rule adding non PriceModifier' =>[
                 [100,'INR','',2,'INR'],
                 ['RuleAddingNonPriceModifier'],
@@ -99,5 +111,45 @@ class TestRuleEngine extends TestCase {
                 'Error in running Rule Engine'
             ]
         ];
+    }
+    
+    function testRunWithWrongLineItem(){
+        $lineItem = $this;
+        $isException = false;
+        try{
+            RuleEngine::run($lineItem);
+        }catch (\Exception $e){
+            $this->assertEquals('Error in running Rule Engine', $e->getMessage());
+            $isException = true;
+        }
+        $this->assertTrue($isException);
+    }
+    
+    function testRunWithWrongRuleEngine(){
+        $lineItem = new LineItem([100,'INR','',2,'INR']);
+        
+        // setting a RulesProvider without interface
+        MockSettings::setSettings(Package::Name, 'rulesProvider', RulesProviderWithoutInterface::class);
+        $isException = false;
+        try{
+            RuleEngine::run($lineItem);
+        }catch (\Exception $e){
+            $this->assertEquals('Error in running Rule Engine', $e->getMessage());
+            $isException = true;
+        }
+        $this->assertTrue($isException);
+
+
+        // setting no RulesProvider
+        MockSettings::setSettings(Package::Name, 'rulesProvider', '');
+        $isException = false;
+        try{
+            RuleEngine::run($lineItem);
+        }catch (\Exception $e){
+            $this->assertEquals('Error in running Rule Engine', $e->getMessage());
+            $isException = true;
+        }
+        $this->assertTrue($isException);
+        
     }
 }

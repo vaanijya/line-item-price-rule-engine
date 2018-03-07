@@ -138,6 +138,10 @@ abstract class LineItem {
         if(!($priceModifier instanceof PriceModifier)){
             throw new ProgrammingError('$priceModifier should be an instance of ICircle\LineItemPriceRuleEngine\PriceModifier');
         }
+        $ruleId = $priceModifier->getRuleId();
+        if(array_key_exists($ruleId, $this->priceModifiers)){
+            throw new ProgrammingError("PriceModifier with ruleId $ruleId is already Added");
+        }
         
         switch ($priceModifier->getOperator()){
             case self::PRICE_MODIFIER_OPERATOR_ADD: 
@@ -155,8 +159,8 @@ abstract class LineItem {
             default:
                 throw new ProgrammingError('Unsupported Operator in PriceModifier');
         }
-
-        $this->priceModifiers[$priceModifier->getRuleId()] = $priceModifier;
+        
+        $this->priceModifiers[$ruleId] = $priceModifier;
         
         return $this;
     }
