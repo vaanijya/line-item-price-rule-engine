@@ -10,12 +10,13 @@ use PhpPlatform\Errors\Exceptions\Application\ProgrammingError;
 abstract class LineItem {
     
     private $unitPrice = 0;
-    private $quantity  = 0;
-    private $unitOfMeasure = null;
-    private $unitOfMeasureOfQuantity = null;
-    private $totalPrice = 0;
-    
     private $currencyOfUnitPrice = null;
+    private $unitOfMeasure = null;
+    
+    private $quantity  = 0;
+    private $unitOfMeasureOfQuantity = null;
+    
+    private $totalPrice = 0;
     private $currencyOfTotalPrice = null;
     
     /**
@@ -39,11 +40,12 @@ abstract class LineItem {
     }
     
     /**
-     * @param float $quantity
+     * @param string $currencyOfUnitPrice
      * @return LineItem
      */
-    protected function setQuantity($quantity) {
-        $this->quantity = $quantity;
+    protected function setCurrencyOfUnitPrice($currencyOfUnitPrice) {
+        $this->currencyOfUnitPrice = $currencyOfUnitPrice;
+        $this->currencyOfTotalPrice = $currencyOfUnitPrice;
         return $this;
     }
     
@@ -57,6 +59,15 @@ abstract class LineItem {
     }
     
     /**
+     * @param float $quantity
+     * @return LineItem
+     */
+    protected function setQuantity($quantity) {
+        $this->quantity = $quantity;
+        return $this;
+    }
+    
+    /**
      * @param string $unitOfMeasureOfQuantity
      * @return LineItem
      */
@@ -65,32 +76,7 @@ abstract class LineItem {
         return $this;
     }
     
-    /**
-     * @param float $totalPrice
-     * @return LineItem
-     */
-    protected function setTotalPrice($totalPrice) {
-        $this->totalPrice = $totalPrice;
-        return $this;
-    }
-    
-    /**
-     * @param string $currencyOfUnitPrice
-     * @return LineItem
-     */
-    protected function setCurrencyOfUnitPrice($currencyOfUnitPrice) {
-        $this->currencyOfUnitPrice = $currencyOfUnitPrice;
-        return $this;
-    }
-    
-    /**
-     * @param string $currencyOfTotalPrice
-     * @return LineItem
-     */
-    protected function setCurrencyOfTotalPrice($currencyOfTotalPrice) {
-        $this->currencyOfTotalPrice = $currencyOfTotalPrice;
-        return $this;
-    }
+
     
     // all getters are public
     

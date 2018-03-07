@@ -3,7 +3,6 @@
 namespace ICircle\LineItemPriceRuleEngine;
 
 use PhpPlatform\Config\Settings;
-use ICircle\InterServiceCommunication\Package;
 use PhpPlatform\Errors\Exceptions\Application\ProgrammingError;
 
 class RuleEngine {
@@ -11,7 +10,7 @@ class RuleEngine {
     /**
      * @param LineItem $lineItem
      */
-    public function run($lineItem){
+    static public function run($lineItem){
         try{
             // validate $lineItem
             if(!($lineItem instanceof LineItem)){
