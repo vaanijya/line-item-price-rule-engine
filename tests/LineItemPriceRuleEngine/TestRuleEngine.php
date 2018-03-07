@@ -12,10 +12,27 @@ use ICircle\Tests\LineItemPriceRuleEngine\Mocks\RulesProviderWithoutInterface;
 
 class TestRuleEngine extends TestCase {
     
+    private $error_log = null;
+    function setUp(){
+        $this->error_log = tempnam(sys_get_temp_dir(),'LIPRE');
+        MockSettings::setSettings('php-platform/errors', 'logs', [
+            "Persistence"=>$this->error_log,
+            "Application"=>$this->error_log,
+            "Http"=>$this->error_log,
+            "System"=>$this->error_log
+        ]);
+    }
+    
+    function tearDown(){
+        unlink($this->error_log);
+    }
+    
     /**
      * @dataProvider dataProviderRun
+     * 
+     * @todo assert the log lines 
      */
-    function testRun($lineItemParams,$rules,$expectedLineItem,$expectedException = null){
+    function testRun($lineItemParams,$rules,$expectedLineItem,$expectedException = null,$expectedErrorLog = null){
         
         $lineItem = new LineItem($lineItemParams);
         
@@ -51,6 +68,9 @@ class TestRuleEngine extends TestCase {
             $this->assertEquals($expectedPriceModifier[3], $actualPriceModifier->getOperator());
         }
         
+        if($expectedErrorLog != null){
+            $this->assertContains($expectedErrorLog, file_get_contents($this->error_log));
+        }
     }
     
     function dataProviderRun(){
@@ -84,7 +104,8 @@ class TestRuleEngine extends TestCase {
                         [2,'Add Rule',20,ALineItem::PRICE_MODIFIER_OPERATOR_ADD]
                     ]
                 ],
-                'Error in running Rule Engine'
+                'Error in running Rule Engine',
+                '[A] PriceModifier with ruleId 1 is already Added : PhpPlatform\Errors\Exceptions\Application\ProgrammingError'
             ],
             'test Rule adding non PriceModifier' =>[
                 [100,'INR','',2,'INR'],
@@ -92,7 +113,8 @@ class TestRuleEngine extends TestCase {
                 ['unitPrice'=>[100,'INR',''],'quantity'=>[2,'INR'],'total'=>[null,'INR'],
                     'priceModifiers' => []
                 ],
-                'Error in running Rule Engine'
+                'Error in running Rule Engine',
+                '[A] $priceModifier should be an instance of ICircle\LineItemPriceRuleEngine\PriceModifier : PhpPlatform\Errors\Exceptions\Application\ProgrammingError'
             ],
             'test Rule without implementing the Rule interface' =>[
                 [100,'INR','',2,'INR'],
@@ -100,7 +122,8 @@ class TestRuleEngine extends TestCase {
                 ['unitPrice'=>[100,'INR',''],'quantity'=>[2,'INR'],'total'=>[null,'INR'],
                     'priceModifiers' => []
                 ],
-                'Error in running Rule Engine'
+                'Error in running Rule Engine',
+                '[A] $rule is not an instace of ICircle\LineItemPriceRuleEngine\Rule : PhpPlatform\Errors\Exceptions\Application\ProgrammingError'
             ],
             'test Rule with wrong operator' =>[
                 [100,'INR','',2,'INR'],
@@ -108,7 +131,8 @@ class TestRuleEngine extends TestCase {
                 ['unitPrice'=>[100,'INR',''],'quantity'=>[2,'INR'],'total'=>[null,'INR'],
                     'priceModifiers' => []
                 ],
-                'Error in running Rule Engine'
+                'Error in running Rule Engine',
+                '[A] Unsupported Operator in PriceModifier : PhpPlatform\Errors\Exceptions\Application\ProgrammingError'
             ]
         ];
     }
@@ -123,6 +147,8 @@ class TestRuleEngine extends TestCase {
             $isException = true;
         }
         $this->assertTrue($isException);
+        $this->assertContains('[A] $lineItem is not an instace of ICircle\LineItemPriceRuleEngine\LineItem : PhpPlatform\Errors\Exceptions\Application\ProgrammingError', file_get_contents($this->error_log));
+        
     }
     
     function testRunWithWrongRuleEngine(){
@@ -138,7 +164,8 @@ class TestRuleEngine extends TestCase {
             $isException = true;
         }
         $this->assertTrue($isException);
-
+        $this->assertContains('[A] ICircle\Tests\LineItemPriceRuleEngine\Mocks\RulesProviderWithoutInterface does not implement ICircle\LineItemPriceRuleEngine\RulesProvider : PhpPlatform\Errors\Exceptions\Application\ProgrammingError', file_get_contents($this->error_log));
+        
 
         // setting no RulesProvider
         MockSettings::setSettings(Package::Name, 'rulesProvider', '');
@@ -150,6 +177,7 @@ class TestRuleEngine extends TestCase {
             $isException = true;
         }
         $this->assertTrue($isException);
+        $this->assertContains('[A] ICircle\Tests\LineItemPriceRuleEngine\Mocks\RulesProviderWithoutInterface does not implement ICircle\LineItemPriceRuleEngine\RulesProvider : PhpPlatform\Errors\Exceptions\Application\ProgrammingError', file_get_contents($this->error_log));
         
     }
 }
