@@ -17,6 +17,6 @@ class ReplaceRule implements Rule{
         $priceModifier->setId(1);
         $priceModifier->setOperator(LineItem::PRICE_MODIFIER_OPERATOR_REPLACE);
         $priceModifier->setAmount(200);
-        $lineItem->addPriceModifier($priceModifier);
+        $lineItem->addPriceModifier($priceModifier,'SGD');
     }
 }

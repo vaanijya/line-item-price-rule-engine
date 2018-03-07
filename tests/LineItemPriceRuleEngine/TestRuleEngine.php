@@ -43,7 +43,12 @@ class TestRuleEngine extends TestCase {
             'Simple Test' =>[
                 [100,'INR','',2,'INR'],
                 ['ReplaceRule'],
-                ['unitPrice'=>[100,'INR',''],'quantity'=>[2,'INR'],'total'=>[200,'INR']]
+                ['unitPrice'=>[100,'INR',''],'quantity'=>[2,'INR'],'total'=>[200,'SGD']]
+            ],
+            'test with multiple rules' =>[
+                [100,'INR','',2,'INR'],
+                ['ReplaceRule','AddRule','SubtractRule'],
+                ['unitPrice'=>[100,'INR',''],'quantity'=>[2,'INR'],'total'=>[189.7,'SGD']]
             ]
         ];
     }
