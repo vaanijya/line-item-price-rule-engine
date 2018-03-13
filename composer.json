@@ -1,7 +1,16 @@
 {
-	"name" : "icircle/line-item-price-rule-engine",
+	"name" : "vaanijya/line-item-price-rule-engine",
 	"description" : "Rule Engine for calculating the Total Price of a Line Item",
 	"type" : "library",
+	"keywords" : [
+		"commerce",
+		"order",
+		"tax",
+		"discounts",
+		"line item",
+		"transaction"
+	],
+	"homepage" : "https://github.com/vaanijya/line-item-price-rule-engine",
 	"authors" : [{
 			"name" : "Raghavendra K R",
 			"email" : "krraghavendra@yahoo.co.in",
@@ -20,12 +29,12 @@
 	},
 	"autoload" : {
 		"psr-4" : {
-			"ICircle\\" : "src/"
+			"Vaanijya\\" : "src/"
 		}
 	},
 	"autoload-dev" : {
 		"psr-4" : {
-			"ICircle\\Tests\\" : "tests/"
+			"Vaanijya\\Tests\\" : "tests/"
 		}
 	},
 	"minimum-stability" : "stable"

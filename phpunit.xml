@@ -2,7 +2,7 @@
 
 <phpunit colors="true" bootstrap="vendor/autoload.php">
   <testsuites>
-    <testsuite name="icircle/line-item-price-rule-engine">
+    <testsuite name="vaanijya/line-item-price-rule-engine">
       <directory suffix=".php">./tests</directory>
     </testsuite>
   </testsuites>
