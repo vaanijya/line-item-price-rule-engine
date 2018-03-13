@@ -9,7 +9,7 @@ class RulesProvider implements IRulesProvider{
     
     /**
     * {@inheritDoc}
-    * @see \ICircle\LineItemPriceRuleEngine\RulesProvider::getRules()
+    * @see \Vaanijya\LineItemPriceRuleEngine\RulesProvider::getRules()
     */
     static public function getRules($lineItem) {
         $rules = [];

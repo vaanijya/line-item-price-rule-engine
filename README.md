@@ -8,7 +8,7 @@ Rules Provider must be supplied as configuration
 
 ## How to use
 ```php
-ICircle\LineItemPriceRuleEngine\RuleEngine::run(ICircle\LineItemPriceRuleEngine\LineItem $lineItem);
+Vaanijya\LineItemPriceRuleEngine\RuleEngine::run(Vaanijya\LineItemPriceRuleEngine\LineItem $lineItem);
 ```
 ## Configuration
 ```JSON
@@ -17,5 +17,5 @@ ICircle\LineItemPriceRuleEngine\RuleEngine::run(ICircle\LineItemPriceRuleEngine\
 }
 ```
 
-`MyPackage\\MyRulesProvider` is expected to implement `ICircle\LineItemPriceRuleEngine\RulesProvider` Interface
+`MyPackage\\MyRulesProvider` is expected to implement `Vaanijya\LineItemPriceRuleEngine\RulesProvider` Interface
 

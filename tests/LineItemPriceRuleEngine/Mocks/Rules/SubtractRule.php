@@ -9,7 +9,7 @@ class SubtractRule implements Rule{
 
     /**
     * {@inheritDoc}
-    * @see \ICircle\LineItemPriceRuleEngine\Rule::exec()
+    * @see \Vaanijya\LineItemPriceRuleEngine\Rule::exec()
     */
     public function exec($lineItem) {
         $priceModifier = new PriceModifier();

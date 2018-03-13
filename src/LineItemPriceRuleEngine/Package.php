@@ -3,5 +3,5 @@
 namespace Vaanijya\LineItemPriceRuleEngine;
 
 interface Package {
-    const Name = "icircle/line-item-price-rule-engine";
+    const Name = "vaanijya/line-item-price-rule-engine";
 }

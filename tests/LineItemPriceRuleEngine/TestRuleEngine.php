@@ -36,7 +36,7 @@ class TestRuleEngine extends TestCase {
         
         $lineItem = new LineItem($lineItemParams);
         
-        RulesProvider::$rules = array_map(function($rule){return 'ICircle\Tests\LineItemPriceRuleEngine\Mocks\Rules\\'.$rule;}, $rules);
+        RulesProvider::$rules = array_map(function($rule){return 'Vaanijya\Tests\LineItemPriceRuleEngine\Mocks\Rules\\'.$rule;}, $rules);
         
         MockSettings::setSettings(Package::Name, 'rulesProvider', RulesProvider::class);
         
@@ -114,7 +114,7 @@ class TestRuleEngine extends TestCase {
                     'priceModifiers' => []
                 ],
                 'Error in running Rule Engine',
-                '[A] $priceModifier should be an instance of ICircle\LineItemPriceRuleEngine\PriceModifier : PhpPlatform\Errors\Exceptions\Application\ProgrammingError'
+                '[A] $priceModifier should be an instance of Vaanijya\LineItemPriceRuleEngine\PriceModifier : PhpPlatform\Errors\Exceptions\Application\ProgrammingError'
             ],
             'test Rule without implementing the Rule interface' =>[
                 [100,'INR','',2,'INR'],
@@ -123,7 +123,7 @@ class TestRuleEngine extends TestCase {
                     'priceModifiers' => []
                 ],
                 'Error in running Rule Engine',
-                '[A] $rule is not an instace of ICircle\LineItemPriceRuleEngine\Rule : PhpPlatform\Errors\Exceptions\Application\ProgrammingError'
+                '[A] $rule is not an instace of Vaanijya\LineItemPriceRuleEngine\Rule : PhpPlatform\Errors\Exceptions\Application\ProgrammingError'
             ],
             'test Rule with wrong operator' =>[
                 [100,'INR','',2,'INR'],
@@ -147,7 +147,7 @@ class TestRuleEngine extends TestCase {
             $isException = true;
         }
         $this->assertTrue($isException);
-        $this->assertContains('[A] $lineItem is not an instace of ICircle\LineItemPriceRuleEngine\LineItem : PhpPlatform\Errors\Exceptions\Application\ProgrammingError', file_get_contents($this->error_log));
+        $this->assertContains('[A] $lineItem is not an instace of Vaanijya\LineItemPriceRuleEngine\LineItem : PhpPlatform\Errors\Exceptions\Application\ProgrammingError', file_get_contents($this->error_log));
         
     }
     
@@ -164,7 +164,7 @@ class TestRuleEngine extends TestCase {
             $isException = true;
         }
         $this->assertTrue($isException);
-        $this->assertContains('[A] ICircle\Tests\LineItemPriceRuleEngine\Mocks\RulesProviderWithoutInterface does not implement ICircle\LineItemPriceRuleEngine\RulesProvider : PhpPlatform\Errors\Exceptions\Application\ProgrammingError', file_get_contents($this->error_log));
+        $this->assertContains('[A] Vaanijya\Tests\LineItemPriceRuleEngine\Mocks\RulesProviderWithoutInterface does not implement Vaanijya\LineItemPriceRuleEngine\RulesProvider : PhpPlatform\Errors\Exceptions\Application\ProgrammingError', file_get_contents($this->error_log));
         
 
         // setting no RulesProvider
@@ -177,7 +177,7 @@ class TestRuleEngine extends TestCase {
             $isException = true;
         }
         $this->assertTrue($isException);
-        $this->assertContains('[A] ICircle\Tests\LineItemPriceRuleEngine\Mocks\RulesProviderWithoutInterface does not implement ICircle\LineItemPriceRuleEngine\RulesProvider : PhpPlatform\Errors\Exceptions\Application\ProgrammingError', file_get_contents($this->error_log));
+        $this->assertContains('[A] Vaanijya\Tests\LineItemPriceRuleEngine\Mocks\RulesProviderWithoutInterface does not implement Vaanijya\LineItemPriceRuleEngine\RulesProvider : PhpPlatform\Errors\Exceptions\Application\ProgrammingError', file_get_contents($this->error_log));
         
     }
 }

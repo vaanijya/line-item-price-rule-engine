@@ -136,7 +136,7 @@ abstract class LineItem {
      */
     public function addPriceModifier($priceModifier,$newCurencyForTotalPrice = null){
         if(!($priceModifier instanceof PriceModifier)){
-            throw new ProgrammingError('$priceModifier should be an instance of ICircle\LineItemPriceRuleEngine\PriceModifier');
+            throw new ProgrammingError('$priceModifier should be an instance of '.PriceModifier::class);
         }
         $ruleId = $priceModifier->getRuleId();
         if(array_key_exists($ruleId, $this->priceModifiers)){
