@@ -1,6 +1,6 @@
 <?php
 
-namespace ICircle\LineItemPriceRuleEngine;
+namespace Vaanijya\LineItemPriceRuleEngine;
 
 /**
  * A rule must implement this interface

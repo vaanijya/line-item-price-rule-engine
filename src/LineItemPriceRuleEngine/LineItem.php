@@ -1,6 +1,6 @@
 <?php
 
-namespace ICircle\LineItemPriceRuleEngine;
+namespace Vaanijya\LineItemPriceRuleEngine;
 
 use PhpPlatform\Errors\Exceptions\Application\ProgrammingError;
 

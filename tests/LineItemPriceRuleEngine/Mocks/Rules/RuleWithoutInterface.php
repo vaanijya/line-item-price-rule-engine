@@ -1,8 +1,8 @@
 <?php
-namespace ICircle\Tests\LineItemPriceRuleEngine\Mocks\Rules;
+namespace Vaanijya\Tests\LineItemPriceRuleEngine\Mocks\Rules;
 
-use ICircle\LineItemPriceRuleEngine\PriceModifier;
-use ICircle\LineItemPriceRuleEngine\LineItem;
+use Vaanijya\LineItemPriceRuleEngine\PriceModifier;
+use Vaanijya\LineItemPriceRuleEngine\LineItem;
 
 class RuleWithoutInterface {
     

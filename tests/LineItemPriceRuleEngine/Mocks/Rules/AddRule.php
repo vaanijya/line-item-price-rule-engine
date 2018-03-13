@@ -1,9 +1,9 @@
 <?php
-namespace ICircle\Tests\LineItemPriceRuleEngine\Mocks\Rules;
+namespace Vaanijya\Tests\LineItemPriceRuleEngine\Mocks\Rules;
 
-use ICircle\LineItemPriceRuleEngine\Rule;
-use ICircle\LineItemPriceRuleEngine\LineItem;
-use ICircle\LineItemPriceRuleEngine\PriceModifier;
+use Vaanijya\LineItemPriceRuleEngine\Rule;
+use Vaanijya\LineItemPriceRuleEngine\LineItem;
+use Vaanijya\LineItemPriceRuleEngine\PriceModifier;
 
 class AddRule implements Rule{
 

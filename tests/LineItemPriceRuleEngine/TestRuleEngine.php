@@ -1,14 +1,14 @@
 <?php
-namespace ICircle\Tests\LineItemPriceRuleEngine;
+namespace Vaanijya\Tests\LineItemPriceRuleEngine;
 
 use PHPUnit\Framework\TestCase;
-use ICircle\Tests\LineItemPriceRuleEngine\Mocks\RulesProvider;
-use ICircle\LineItemPriceRuleEngine\RuleEngine;
-use ICircle\Tests\LineItemPriceRuleEngine\Mocks\LineItem;
+use Vaanijya\Tests\LineItemPriceRuleEngine\Mocks\RulesProvider;
+use Vaanijya\LineItemPriceRuleEngine\RuleEngine;
+use Vaanijya\Tests\LineItemPriceRuleEngine\Mocks\LineItem;
 use PhpPlatform\Mock\Config\MockSettings;
-use ICircle\LineItemPriceRuleEngine\Package;
-use ICircle\LineItemPriceRuleEngine\LineItem as ALineItem;
-use ICircle\Tests\LineItemPriceRuleEngine\Mocks\RulesProviderWithoutInterface;
+use Vaanijya\LineItemPriceRuleEngine\Package;
+use Vaanijya\LineItemPriceRuleEngine\LineItem as ALineItem;
+use Vaanijya\Tests\LineItemPriceRuleEngine\Mocks\RulesProviderWithoutInterface;
 
 class TestRuleEngine extends TestCase {
     

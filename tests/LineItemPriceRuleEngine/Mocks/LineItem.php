@@ -1,7 +1,7 @@
 <?php
-namespace ICircle\Tests\LineItemPriceRuleEngine\Mocks;
+namespace Vaanijya\Tests\LineItemPriceRuleEngine\Mocks;
 
-use ICircle\LineItemPriceRuleEngine\LineItem as ALineItem;
+use Vaanijya\LineItemPriceRuleEngine\LineItem as ALineItem;
 
 class LineItem extends ALineItem{
     

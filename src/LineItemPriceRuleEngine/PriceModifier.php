@@ -1,6 +1,6 @@
 <?php
 
-namespace ICircle\LineItemPriceRuleEngine;
+namespace Vaanijya\LineItemPriceRuleEngine;
 
 /**
  * This class represents the PriceModifier, 

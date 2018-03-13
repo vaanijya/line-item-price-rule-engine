@@ -1,5 +1,5 @@
 <?php
-namespace ICircle\Tests\LineItemPriceRuleEngine\Mocks;
+namespace Vaanijya\Tests\LineItemPriceRuleEngine\Mocks;
 
 class RulesProviderWithoutInterface {
     

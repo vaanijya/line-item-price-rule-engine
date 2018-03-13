@@ -1,7 +1,7 @@
 <?php
-namespace ICircle\Tests\LineItemPriceRuleEngine\Mocks;
+namespace Vaanijya\Tests\LineItemPriceRuleEngine\Mocks;
 
-use ICircle\LineItemPriceRuleEngine\RulesProvider as IRulesProvider;
+use Vaanijya\LineItemPriceRuleEngine\RulesProvider as IRulesProvider;
 
 class RulesProvider implements IRulesProvider{
     
