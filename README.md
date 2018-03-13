@@ -1,8 +1,6 @@
 # Rule Engine for calculating the Total Price of a Line Item 
 
-[![pipeline status](https://gitlab.com/codecov-ic-lipre/line-item-price-rule-engine/badges/v0.1/pipeline.svg)](https://gitlab.com/codecov-ic-lipre/line-item-price-rule-engine/commits/v0.1)
-
-[![coverage report](https://gitlab.com/codecov-ic-lipre/line-item-price-rule-engine/badges/v0.1/coverage.svg)](https://gitlab.com/codecov-ic-lipre/line-item-price-rule-engine/commits/v0.1)
+[![Build Status](https://travis-ci.org/vaanijya/line-item-price-rule-engine.svg?branch=v0.1)](https://travis-ci.org/vaanijya/line-item-price-rule-engine)
 
 Run the rule engine by suppliing the line item to calculate the all price modifications for that line item
 
