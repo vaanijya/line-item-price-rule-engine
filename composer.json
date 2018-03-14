@@ -10,6 +10,7 @@
 		"line item",
 		"transaction"
 	],
+	"license" : "Apache-2.0",
 	"homepage" : "https://github.com/vaanijya/line-item-price-rule-engine",
 	"authors" : [{
 			"name" : "Raghavendra K R",
